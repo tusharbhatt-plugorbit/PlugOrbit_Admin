@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// The Admin API (firebase-admin) bypasses these rules; browsers and mobile clients must never read or
+// write the admin collections directly. All access goes through the API, which enforces roles,
+// validation, masking and the audit trail.
+//
+// Mobile note: when the mobile app starts reading stations from Firestore, add a narrow read rule for
+// `stations`/`connectors`/`tariffs` limited to `visibleInApp == true`. See docs/MOBILE_CONTRACT.md.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
