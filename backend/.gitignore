@@ -1,0 +1,11 @@
+# Secrets: copy .env.example and fill in locally
+.env
+serviceAccountKey.json
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
